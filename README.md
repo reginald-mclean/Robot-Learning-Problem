@@ -92,6 +92,6 @@ This section will track all major updates to the engines, frameworks, and benchm
 
 | Date | Tool | Change Description | Notes / Links |
 | ---- | ---- | ------------------ | ------------- |
-| –    | –    | –                  | –             |
+| June 2025  | NA   | Initial Commit of Resources after paper submission                  | –             |
 
 *Entries will be added here as releases are announced or new tools are included.*
