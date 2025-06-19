@@ -169,6 +169,21 @@
   </section>
   <!-- End paper abstract -->
 
+  <section class="robot-learning-gallery" style="display: flex; flex-direction: column; align-items: center; max-width: 700px; margin: 0 auto; font-size: 0.95em;">
+  <h2 class="title is-4" style="text-align: center; font-size: 1.6em;">Robot Learning Problem Diagram</h2>
+  <div class="mosaic" style="display: flex; gap: 1em; justify-content: center;">
+    <figure>
+      <img id="flowchart-img" src="static/images/robot_learning_diagram/Flowchart.png" alt="Outline of Robot Learning" style="cursor: pointer; max-width: 720px ; height: auto;">
+      <figcaption style="text-align: center; font-size: 0.95em;">Outline of Robot Learning</figcaption>
+    </figure>
+  </div>
+  <div style="text-align: center; margin-top: 1em; font-weight: bold; font-size: 0.95em;">
+    The robot learning problem is complex and requires a variety of software tools to solve. The diagram above illustrates the
+    different components involved in the robot learning problem, including the simulation environment, physics engine,
+    and robot learning algorithms. The role of different components make it challenging to itemize software tools in mutually exclusive categories.
+  </div>
+</section>
+
   <section class="sim-gallery">
     <h2 class="title is-3">Simulation Frameworks/Benchmarks Gallery</h2>
 
@@ -509,15 +524,29 @@
     const caption = document.getElementById('modal-caption');
     const closeBtn = document.querySelector('.modal-close');
 
-    // open on any mosaic image click
+    // open on any mosaic image click (gallery images)
     document.querySelectorAll('.mosaic img').forEach(img => {
-      img.addEventListener('click', () => {
-        modalImg.src = img.src;
-        modalImg.alt = img.alt;
-        caption.textContent = img.alt || '';
+      // Only add the default gallery handler if not the flowchart image
+      if (img.id !== 'flowchart-img') {
+        img.addEventListener('click', () => {
+          modalImg.src = img.src;
+          modalImg.alt = img.alt;
+          caption.textContent = img.alt || '';
+          modal.classList.add('show');
+        });
+      }
+    });
+
+    // Special handler for flowchart image
+    const flowchartImg = document.getElementById('flowchart-img');
+    if (flowchartImg) {
+      flowchartImg.addEventListener('click', () => {
+        modalImg.src = 'static/images/robot_learning_diagram/Flowchart2.png';
+        modalImg.alt = 'Details of software tools';
+        caption.textContent = 'Details of software tools';
         modal.classList.add('show');
       });
-    });
+    }
 
     // close when clicking the × or clicking outside the image
     closeBtn.addEventListener('click', () => modal.classList.remove('show'));
